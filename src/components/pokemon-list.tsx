@@ -1,6 +1,7 @@
 "use client";
 
 import { usePokemonList } from "@/hooks/use-pokemon-list";
+import { PokemonCard } from "@/components/pokemon-card";
 
 export function PokemonList() {
   const { data, isLoading, isError, error } = usePokemonList({ limit: 9 });
@@ -15,11 +16,8 @@ export function PokemonList() {
       </p>
       <ul className="grid grid-cols-3 gap-4">
         {data?.results.map((pokemon) => (
-          <li
-            key={pokemon.name}
-            className="rounded-lg border p-4 text-center capitalize"
-          >
-            {pokemon.name}
+          <li key={pokemon.name}>
+            <PokemonCard name={pokemon.name} />
           </li>
         ))}
       </ul>
