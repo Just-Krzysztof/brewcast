@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BrewCast",
-  description: "Weather-based brewery finder",
+  title: "PokeFinder",
+  description: "Chose your favorite pokemon and find out more about it!",
 };
 
 export default async function RootLayout({
