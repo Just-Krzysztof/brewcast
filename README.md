@@ -1,4 +1,4 @@
-# Brewcast — Pokémon Browser
+# PokeFinder — Find your Pokémon
 
 Aplikacja do przeglądania, filtrowania i porównywania Pokémonów, zbudowana na Next.js z wykorzystaniem publicznego [PokeAPI](https://pokeapi.co).
 
