@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useMessages } from "next-intl";
 import { usePokemonBasic } from "@/hooks/use-pokemon-basic";
 import { useFavoritesStore } from "@/store/favorites";
 import { useComparisonStore } from "@/store/comparison";
@@ -14,6 +14,10 @@ interface PokemonCardProps {
 
 export function PokemonCard({ name, onDetails }: PokemonCardProps) {
   const t = useTranslations("pokemonCard");
+  const messages = useMessages();
+  const rawTypes = messages.types as Record<string, string> | undefined;
+  const typeName = (type: string) => rawTypes?.[type] ?? type;
+
   const { data, isLoading, isError } = usePokemonBasic(name);
   const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
   const isFavorite = useFavoritesStore((s) => s.isFavorite(name));
@@ -62,9 +66,9 @@ export function PokemonCard({ name, onDetails }: PokemonCardProps) {
         {data.types.map((type) => (
           <span
             key={type}
-            className={`rounded-full px-2 py-0.5 text-xs capitalize text-black font-bold ${getTypeGradient(type)}`}
+            className={`rounded-full px-2 py-0.5 text-xs text-black font-bold ${getTypeGradient(type)}`}
           >
-            {type}
+            {typeName(type)}
           </span>
         ))}
       </div>

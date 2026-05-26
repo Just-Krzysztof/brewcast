@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useMessages } from "next-intl";
 import { usePokemonDetails } from "@/hooks/use-pokemon-details";
 import { getTypeGradient } from "@/lib/pokemon-types";
 
@@ -10,6 +10,10 @@ interface PokemonDetailCardProps {
 
 export function PokemonDetailCard({ name }: PokemonDetailCardProps) {
   const t = useTranslations("pokemonDetail");
+  const messages = useMessages();
+  const rawTypes = messages.types as Record<string, string> | undefined;
+  const typeName = (type: string) => rawTypes?.[type] ?? type;
+
   const { data, isLoading, isError } = usePokemonDetails(name);
 
   if (isLoading) {
@@ -50,9 +54,9 @@ export function PokemonDetailCard({ name }: PokemonDetailCardProps) {
         {data.types.map((type) => (
           <span
             key={type}
-            className={`rounded-full px-2.5 py-0.5 text-xs capitalize text-white ${getTypeGradient(type)}`}
+            className={`rounded-full px-2.5 py-0.5 text-xs text-white ${getTypeGradient(type)}`}
           >
-            {type}
+            {typeName(type)}
           </span>
         ))}
       </div>
