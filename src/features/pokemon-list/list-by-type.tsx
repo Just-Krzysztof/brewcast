@@ -49,7 +49,7 @@ export function PokemonListByType({ typeName }: PokemonListByTypeProps) {
       <p className="mb-4 text-sm text-zinc-500">
         {t("typeTotal", { count: allNames?.length ?? 0, type: typeName })}
       </p>
-      <ul className="grid grid-cols-3 gap-4">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {pageNames.map((name) => (
           <li key={name}>
             <PokemonCard name={name} />

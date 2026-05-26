@@ -83,7 +83,7 @@ export function PokemonListAll() {
   return (
     <div>
       <p className="mb-4 text-sm text-zinc-500">{t("total", { count: data?.count ?? 0 })}</p>
-      <ul className={`grid grid-cols-3 gap-4 ${isFetching ? "opacity-60" : ""}`}>
+      <ul className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ${isFetching ? "opacity-60" : ""}`}>
         {data?.results.map((pokemon) => (
           <li key={pokemon.name}>
             <PokemonCard name={pokemon.name} />

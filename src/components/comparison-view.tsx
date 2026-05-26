@@ -28,7 +28,7 @@ export function ComparisonView({ onGoToAll }: ComparisonViewProps) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
       {comparison.map((name) => (
         <div key={name} className="relative">
           <button

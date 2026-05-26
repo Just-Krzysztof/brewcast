@@ -18,7 +18,7 @@ export default function Home() {
   }
 
   return (
-    <main className="p-8">
+    <main className="p-4 sm:p-8">
       <h1 className="mb-6 text-3xl font-bold">{t("title")}</h1>
 
       <Nav activeView={view} onChange={handleViewChange} />
